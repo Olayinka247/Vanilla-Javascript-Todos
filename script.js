@@ -19,7 +19,7 @@ function addTodo() {
   todos.push({
     title: title,
     dueDate: dueDate,
-  }); // push it into the array/ adding a new list of todos
+  }); // adding new object to the array
   render();
 }
 
@@ -28,6 +28,10 @@ function render() {
   todos.forEach((todo) => {
     const element = document.createElement("div");
     element.innerText = todo.title + "   " + todo.dueDate;
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    element.appendChild(deleteButton);
+
     const todoList = document.getElementById("todo-list");
     todoList.appendChild(element);
   });
