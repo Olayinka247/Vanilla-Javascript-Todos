@@ -2,13 +2,17 @@ const todos = [
   {
     title: "Wash Dishes",
     dueDate: "04-09-2023",
+    id: "id001",
   },
   {
     title: "Buy Milk",
     dueDate: "02-05-2023",
+    id: "id002",
   },
 ];
 render(); // to render what we already have in the array before the push
+
+function deleteTodo() {}
 
 function addTodo() {
   const todoInput = document.getElementById("input-todo");
@@ -16,9 +20,11 @@ function addTodo() {
   const datePick = document.getElementById("due-date");
   const dueDate = datePick.value;
   if (title === "" || dueDate == "") return alert("Please fill all fields!");
+  const id = new Date().getTime();
   todos.push({
     title: title,
     dueDate: dueDate,
+    id: id,
   }); // adding new object to the array
   render();
 }
@@ -31,6 +37,9 @@ function render() {
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
     element.appendChild(deleteButton);
+    deleteButton.style = "margin-left: 20px";
+    deleteButton.onclick = deleteTodo;
+    deleteButton.id = todo.id;
 
     const todoList = document.getElementById("todo-list");
     todoList.appendChild(element);
